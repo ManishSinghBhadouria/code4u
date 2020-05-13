@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="shortcut icon" href="{% static 'logo.jpg' %}"/>
+    <title>Code4U | Python</title>
+	<link rel="stylesheet" href="{% static 'styles.css' %}">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".hamburger").click(function(){
+			   $(".wrapper").toggleClass("collapse");
+			});
+		});
+		
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999999999)
+  document.execCommand("copy");
+  
+}
+	</script>
+	<style>
+.button-secondary {
+            color: black;
+            border-radius: 10px;
+            text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+			}
+.button-secondary {
+            background: rgb(66, 184, 221);
+            /* this is a light blue */
+        }
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+textarea {
+ font-size: 1.2em;
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ border: 2px solid white;
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="top_navbar">
+    <div class="hamburger">
+       <div class="one"></div>
+       <div class="two"></div>
+       <div class="three"></div>
+    </div>
+    <div class="top_menu">
+    
+      <img src="logo.jpg" width="60" height="50" class="d-inline-block align-top" alt="">
+    <div class="logo"><span class="badge badge-pill badge-dark"><h2>Code<span span style="color:orange;font:normal">4U</span></h2></span></div>
+  
+    </div>
+  </div>
+  
+  <div class="sidebar">
+      <ul>
+	  
+		
+        <li><a href="#">
+          <span class="icon"><i class="fa fa-search"></i></span>
+          <span class="title"><form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+			<input type="text" placeholder="Search.." name="search2">
+			<button type="submit"><i class="fa fa-search"></i></button>
+			</form></span>
+      </a></li>
+		 <li>
+		 <a href="{% url 'index' %}">
+          <span class="icon"><i class="fas fa-home"></i></span>
+          <span class="title">HomePage</span>
+		 </a>
+		 </li>
+          </a></li>
+          <li>
+		 <a href="{% url 'python' %}">
+          <span class="icon"><i class="fas fa-book"></i></span>
+          <span class="title">Age Calculator</span>
+		 </a>
+		 </li>
+        {% for record in allrecord %}
+		 <li>
+		 <a href="getpycode/{{record.id}}">
+          <span class="icon"><i class="fas fa-book"></i></span>
+          <span class="title">{{record.name}}</span>
+		 </a>
+		 </li>
+     {% endfor %}
+		 
+		 
+        
+    </ul>
+  </div>
+  
+  <div class="main_container">
+  <h1>Python Code For Calculating Age</h1>
+    <div class="item">
+      How To Calculate Age Of Any Persion With Their Total Years,Months,Days,Hours,Minutes,Seconds 
+    </div>
+	&nbsp;&nbsp;&nbsp;
+	<button onclick="myFunction()" class="button-secondary pure-button"><h3>Copy Code</h3></button>
+	<div class="item">
+	<textarea id="myInput" rows="25" cols="120" style="font-family: Arial, Helvetica, sans-serif; font-size:14pt; font-style:bold;color:blue;white-space:pre-wrap" readonly>
+from datetime import datetime
+import time
+dob = input("Enter DOB, use dd/mm/yyyy format: ")
+dob = datetime.strptime(dob, '%d/%m/%Y')
+print("Here are your age statistics...")
+time.sleep(2)
+print ("Years : %d" % ((datetime.today() - dob).days/365))
+print ("Months : %d" % ((datetime.today() - dob).days/30))
+print ("Dayss : %d" % ((datetime.today() - dob).days))
+print ("Hours : %d" % ((datetime.today() - dob).days*24))
+print ("Minutes : %d" % ((datetime.today() - dob).days*1440))
+print ("Seconds : %d" % ((datetime.today() - dob).days*86400))
+x=input("---------------------------------")
+</textarea>
+
+
+    </div>
+    
+  </div>
+</div>
+	
+</body>
+</html>
